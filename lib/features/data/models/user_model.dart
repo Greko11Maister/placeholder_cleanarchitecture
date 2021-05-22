@@ -1,3 +1,5 @@
+import 'package:placeholder_cleanarchitecture/features/data/models/address_model.dart';
+import 'package:placeholder_cleanarchitecture/features/data/models/company_model.dart';
 import 'package:placeholder_cleanarchitecture/features/domain/entities/user_entity.dart';
 
 // ignore: must_be_immutable
