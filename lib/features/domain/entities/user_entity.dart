@@ -1,4 +1,6 @@
 import 'package:equatable/equatable.dart';
+import 'package:placeholder_cleanarchitecture/features/domain/entities/address_entity.dart';
+import 'package:placeholder_cleanarchitecture/features/domain/entities/company_entity.dart';
 
 // ignore: must_be_immutable
 class UserEntity  extends Equatable {
