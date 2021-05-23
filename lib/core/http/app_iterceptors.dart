@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 
 class AppInterceptors extends Interceptor {
   @override
-  Future<dynamic> onRequest(RequestOptions options) async {
+  Future<dynamic> onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
     List noRequiresAuthentication = [
       'api/auth/login',
     ];
@@ -13,38 +13,25 @@ class AppInterceptors extends Interceptor {
       String token = await getToken();
       options.headers.addAll({"Authorization": "Bearer $token"});
 
-      return options;
     }
+    return super.onRequest(options, handler);
   }
 
   @override
-  Future onError(DioError dioError) {
-    switch (dioError.type) {
-      case DioErrorType.RESPONSE:
-        if (dioError.response.statusCode == 401) {
-          print("dioError.response.request.path: ${dioError.response.request.path}");
-          if (dioError.response.request.path != "/login" && dioError.response.request.path != "code_company_page") {}
+  Future onError(DioError err, ErrorInterceptorHandler handler) async {
+    switch (err.type) {
+      case DioErrorType.response:
+        if (err.response?.statusCode == 401) {
         }
         break;
       default:
         break;
     }
 
-    print("\t\terrorDescription:\t $dioError");
-    return super.onError(dioError);
+    return super.onError(err, handler);
   }
 
   Future<String> getToken() async {
     return "";
-  }
-
-  @override
-  Future<dynamic> onResponse(Response response) async {
-    if (response.data is Map<String, dynamic> && response.data["error"] != null) {
-      var $data = response.data as Map<String, dynamic>;
-      var error = DioError(request: response.request, error: $data["error"]);
-      print($data);
-      return Future.error(error);
-    }
   }
 }

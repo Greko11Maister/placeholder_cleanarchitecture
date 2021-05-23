@@ -8,6 +8,6 @@ import 'package:placeholder_cleanarchitecture/features/domain/entities/user_enti
 
 abstract class UserRepository {
 
-  Future<Either<Failure, List <UserEntity>>> getUsers();
+  Future<Either<Failure, List<UserEntity>>> getUsers();
 
 }

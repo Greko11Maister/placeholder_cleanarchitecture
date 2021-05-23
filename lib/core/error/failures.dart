@@ -24,15 +24,15 @@ class ServerFailure extends Failure {
     Map? _data;
     _statusCode = error?.response?.statusCode;
     if (error?.response?.data is Map) {
-      if (error?.response.data.containsKey('mensaje')) {
+      if (error?.response?.data.containsKey('mensaje')) {
         _message = error?.response?.data['mensaje'];
-      } else if (error?.response.data.containsKey('message')) {
+      } else if (error?.response?.data.containsKey('message')) {
         _message = error?.response?.data['message'];
-      } else if (error?.response.data.containsKey('agotado')) {
+      } else if (error?.response?.data.containsKey('agotado')) {
         _message = error?.response?.data['agotado'];
-      } else if (error?.response.data.containsKey('titulo')) {
+      } else if (error?.response?.data.containsKey('titulo')) {
         _message = error?.response?.data['titulo'];
-      } else if (error?.response.data.containsKey('error')) {
+      } else if (error?.response?.data.containsKey('error')) {
         _message = error?.response?.data['error'];
       }
     } else if (error?.error is String) {

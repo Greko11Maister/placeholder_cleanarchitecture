@@ -9,7 +9,7 @@ class ApiProvider {
   Dio? dio;
 
   ApiProvider() {
-    dio = Dio(BaseOptions(baseUrl: _baseApiUrl));
+    dio = Dio(BaseOptions(baseUrl: _baseApiUrl.toString()));
     dio?.interceptors.add(AppInterceptors());
   }
 }
